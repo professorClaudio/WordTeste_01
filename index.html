@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova Word Básico e Intermediário</title>
+    <style>
+        /* Estilos CSS */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .quiz-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2b579a; /* Cor primária do Word */
+            text-align: center;
+            border-bottom: 3px solid #2b579a;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .question {
+            background-color: #eaf1f7;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #2b579a;
+        }
+
+        .question p {
+            font-weight: bold;
+            margin-top: 0;
+            color: #1a1a1a;
+            font-size: 1.1em;
+        }
+
+        .options label {
+            display: block;
+            margin: 8px 0;
+            padding: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .options label:hover {
+            background-color: #dbe9f4;
+            border-radius: 4px;
+        }
+
+        .options input[type="radio"] {
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* Estilos de Resultado */
+        .result-feedback {
+            margin-top: 5px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: none;
+        }
+
+        /* Cor Correta: AZUL */
+        .correct {
+            background-color: #e0f2ff; 
+            color: #1a3a5f; 
+            border: 1px solid #b3d9ff;
+        }
+
+        /* Cor Incorreta: VERMELHO */
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Estilo do Botão */
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #0c5a9b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #0a4c7e;
+        }
+
+        /* Seção de Pontuação Final */
+        #results-container {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px solid #2b579a;
+            border-radius: 10px;
+            display: none;
+            background-color: #e6f7ff;
+        }
+
+        #score, #percentage {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #1a3c66;
+            margin-top: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #ccc;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <h1>Teste de Conhecimento - Microsoft Word Básico e Intermediário</h1>
+        <h2>Avaliação de 25 questões sobre Interface, Formatação e Recursos Avançados.</h2>
+        
+        <form id="quiz-form">
+            
+            <div class="question">
+                <p>1. Qual é a extensão de arquivo padrão para documentos criados e salvos no Microsoft Word 2013/2016?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="a"> .DOC</label>
+                    <label><input type="radio" name="q1" value="b"> .DOCX</label>
+                    <label><input type="radio" name="q1" value="c"> .TXT</label>
+                    <label><input type="radio" name="q1" value="d"> .XLSX</label>
+                </div>
+                <div class="result-feedback" id="feedback-q1"></div>
+            </div>
+
+            <div class="question">
+                <p>2. Onde está localizada a Barra de Status, que exibe a contagem de palavras, o número da página e os botões de Modos de Exibição?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="a"> No canto superior esquerdo.</label>
+                    <label><input type="radio" name="q2" value="b"> Na parte superior da Faixa de Opções.</label>
+                    <label><input type="radio" name="q2" value="c"> Na parte inferior da janela do Word.</label>
+                    <label><input type="radio" name="q2" value="d"> Apenas na Visualização Backstage.</label>
+                </div>
+                <div class="result-feedback" id="feedback-q2"></div>
+            </div>
+
+            <div class="question">
+                <p>3. Como são chamadas as áreas dentro de uma Guia (como 'Início') que agrupam comandos relacionados (ex: 'Fonte', 'Parágrafo')?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="a"> Painéis</label>
+                    <label><input type="radio" name="q3" value="b"> Grupos</label>
+                    <label><input type="radio" name="q3" value="c"> Barras Laterais</label>
+                    <label><input type="radio" name="q3" value="d"> Subguias</label>
+                </div>
+                <div class="result-feedback" id="feedback-q3"></div>
+            </div>
+
+            <div class="question">
+                <p>4. Clicar na guia **Arquivo** (Visualização Backstage) dá acesso a qual das seguintes opções?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="a"> Inserção de SmartArt.</label>
+                    <label><input type="radio" name="q4" value="b"> Alteração da cor do texto.</label>
+                    <label><input type="radio" name="q4" value="c"> Informações, Salvar Como e Imprimir.</label>
+                    <label><input type="radio" name="q4" value="d"> Controles de revisão ortográfica.</label>
+                </div>
+                <div class="result-feedback" id="feedback-q4"></div>
+            </div>
+
+            <div class="question">
+                <p>5. Qual é o atalho de teclado usado para salvar um documento pela primeira vez ou atualizar a versão salva do documento atual?</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="a"> Ctrl + C</label>
+                    <label><input type="radio" name="q5" value="b"> Ctrl + A</label>
+                    <label><input type="radio" name="q5" value="c"> Ctrl + S</label>
+                    <label><input type="radio" name="q5" value="d"> Ctrl + V</label>
+                </div>
+                <div class="result-feedback" id="feedback-q5"></div>
+            </div>
+
+            <div class="question">
+                <p>6. O Modo de Exibição que simula como o documento ficará na página impressa (incluindo margens e cabeçalhos/rodapés) é o:</p>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="a"> Rascunho</label>
+                    <label><input type="radio" name="q6" value="b"> Modo de Leitura</label>
+                    <label><input type="radio" name="q6" value="c"> Layout de Impressão</label>
+                    <label><input type="radio" name="q6" value="d"> Layout da Web</label>
+                </div>
+                <div class="result-feedback" id="feedback-q6"></div>
+            </div>
+
+            <div class="question">
+                <p>7. A principal função da **Régua** (vertical e horizontal) no Word é:</p>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="a"> Medir a temperatura do computador.</label>
+                    <label><input type="radio" name="q7" value="b"> Ajudar a definir margens, recuos e tabulações de forma visual.</label>
+                    <label><input type="radio" name="q7" value="c"> Exibir o número de palavras por linha.</label>
+                    <label><input type="radio" name="q7" value="d"> Alinhar imagens ao centro da página automaticamente.</label>
+                </div>
+                <div class="result-feedback" id="feedback-q7"></div>
+            </div>
+
+            <div class="question">
+                <p>8. Em qual guia da Faixa de Opções você encontra as ferramentas para alterar o **tamanho do papel**, a **orientação** (retrato/paisagem) e as **margens**?</p>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="a"> Inserir</label>
+                    <label><input type="radio" name="q8" value="b"> Início</label>
+                    <label><input type="radio" name="q8" value="c"> Layout</label>
+                    <label><input type="radio" name="q8" value="d"> Design</label>
+                </div>
+                <div class="result-feedback" id="feedback-q8"></div>
+            </div>
+
+            <div class="question">
+                <p>9. Qual atalho de teclado você usa para **selecionar todo o conteúdo** de um documento?</p>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="a"> Ctrl + S</label>
+                    <label><input type="radio" name="q9" value="b"> Ctrl + X</label>
+                    <label><input type="radio" name="q9" value="c"> Ctrl + T (ou Ctrl + A em algumas configurações)</label>
+                    <label><input type="radio" name="q9" value="d"> Ctrl + P</label>
+                </div>
+                <div class="result-feedback" id="feedback-q9"></div>
+            </div>
+
+            <div class="question">
+                <p>10. O atalho de teclado para **Recortar** um texto selecionado é **Ctrl + X**. Qual é o atalho para **Colar** o texto recortado ou copiado?</p>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="a"> Ctrl + Z</label>
+                    <label><input type="radio" name="q10" value="b"> Ctrl + C</label>
+                    <label><input type="radio" name="q10" value="c"> Ctrl + V</label>
+                    <label><input type="radio" name="q10" value="d"> Ctrl + P</label>
+                </div>
+                <div class="result-feedback" id="feedback-q10"></div>
+            </div>
+
+            <div class="question">
+                <p>11. Qual atalho de teclado abre diretamente a caixa de diálogo **Localizar e Substituir** no Word?</p>
+                <div class="options">
+                    <label><input type="radio" name="q11" value="a"> Ctrl + L</label>
+                    <label><input type="radio" name="q11" value="b"> Ctrl + U (Para "Substituir") ou Ctrl + L (Para "Localizar")</label>
+                    <label><input type="radio" name="q11" value="c"> Ctrl + I</label>
+                    <label><input type="radio" name="q11" value="d"> Ctrl + D</label>
+                </div>
+                <div class="result-feedback" id="feedback-q11"></div>
+            </div>
+
+            <div class="question">
+                <p>12. O que o recurso "Limpar Toda a Formatação" (símbolo de 'A' com borracha) faz?</p>
+                <div class="options">
+                    <label><input type="radio" name="q12" value="a"> Apaga o texto selecionado.</label>
+                    <label><input type="radio" name="q12" value="b"> Aplica a formatação de Negrito.</label>
+                    <label><input type="radio" name="q12" value="c"> Remove toda a formatação aplicada (fonte, tamanho, cor, estilo) e retorna ao estilo Normal.</label>
+                    <label><input type="radio" name="q12" value="d"> Muda a orientação da página.</label>
+                </div>
+                <div class="result-feedback" id="feedback-q12"></div>
+            </div>
+
+            <div class="question">
+                <p>13. O atalho de teclado para aplicar **Negrito** a um texto selecionado é Ctrl + N. Qual é o atalho para aplicar **Itálico**?</p>
+                <div class="options">
+                    <label><input type="radio" name="q13" value="a"> Ctrl + S</label>
+                    <label><input type="radio" name="q13" value="b"> Ctrl + U</label>
+                    <label><input type="radio" name="q13" value="c"> Ctrl + I</label>
+                    <label><input type="radio" name="q13" value="d"> Ctrl + X</label>
+                </div>
+                <div class="result-feedback" id="feedback-q13"></div>
+            </div>
+
+            <div class="question">
+                <p>14. Na guia Início, qual **Grupo** contém os comandos para alterar o tipo (ex: Arial), o tamanho e a cor da fonte?</p>
+                <div class="options">
+                    <label><input type="radio" name="q14" value="a"> Parágrafo</label>
+                    <label><input type="radio" name="q14" value="b"> Estilos</label>
+                    <label><input type="radio" name="q14" value="c"> Fonte</label>
+                    <label><input type="radio" name="q14" value="d"> Edição</label>
+                </div>
+                <div class="result-feedback" id="feedback-q14"></div>
+            </div>
+
+            <div class="question">
+                <p>15. O recurso **Capitular** (letra inicial grande) é usado para fins decorativos. Em qual guia ele pode ser encontrado?</p>
+                <div class="options">
+                    <label><input type="radio" name="q15" value="a"> Início</label>
+                    <label><input type="radio" name="q15" value="b"> Inserir</label>
+                    <label><input type="radio" name="q15" value="c"> Design</label>
+                    <label><input type="radio" name="q15" value="d"> Layout</label>
+                </div>
+                <div class="result-feedback" id="feedback-q15"></div>
+            </div>
+
+            <div class="question">
+                <p>16. Qual é o atalho de teclado para **Desfazer** (voltar) a última ação no Word?</p>
+                <div class="options">
+                    <label><input type="radio" name="q16" value="a"> Ctrl + Y</label>
+                    <label><input type="radio" name="q16" value="b"> Ctrl + X</label>
+                    <label><input type="radio" name="q16" value="c"> Ctrl + Z</label>
+                    <label><input type="radio" name="q16" value="d"> Ctrl + R</label>
+                </div>
+                <div class="result-feedback" id="feedback-q16"></div>
+            </div>
+
+            <div class="question">
+                <p>17. Onde você define **Bordas** ou **Sombreamento** para um **parágrafo** ou uma **página inteira**?</p>
+                <div class="options">
+                    <label><input type="radio" name="q17" value="a"> Grupo Fonte (Guia Início)</label>
+                    <label><input type="radio" name="q17" value="b"> Grupo Parágrafo (Guia Início) e Guia Design/Layout.</label>
+                    <label><input type="radio" name="q17" value="c"> Guia Revisão.</label>
+                    <label><input type="radio" name="q17" value="d"> Visualização Backstage.</label>
+                </div>
+                <div class="result-feedback" id="feedback-q17"></div>
+            </div>
+
+            <div class="question">
+                <p>18. A principal vantagem de usar os recursos de **Marcadores** ou **Numeração** (Guia Início) é:</p>
+                <div class="options">
+                    <label><input type="radio" name="q18" value="a"> Aplicar Negrito automaticamente.</label>
+                    <label><input type="radio" name="q18" value="b"> Permitir que o Word gerencie automaticamente os números e recuos da lista.</label>
+                    <label><input type="radio" name="q18" value="c"> Apenas mudar a cor do texto.</label>
+                    <label><input type="radio" name="q18" value="d"> Criar uma nova tabela.</label>
+                </div>
+                <div class="result-feedback" id="feedback-q18"></div>
+            </div>
+
+            <div class="question">
+                <p>19. Para dividir o corpo do seu texto em duas ou mais **colunas de jornal**, qual Guia da Faixa de Opções deve ser usada?</p>
+                <div class="options">
+                    <label><input type="radio" name="q19" value="a"> Inserir</label>
+                    <label><input type="radio" name="q19" value="b"> Revisão</label>
+                    <label><input type="radio" name="q19" value="c"> Layout</label>
+                    <label><input type="radio" name="q19" value="d"> Correspondências</label>
+                </div>
+                <div class="result-feedback" id="feedback-q19"></div>
+            </div>
+
+            <div class="question">
+                <p>20. Qual atalho de teclado ativa a ferramenta de **Revisão Ortográfica e Gramatical** do Word?</p>
+                <div class="options">
+                    <label><input type="radio" name="q20" value="a"> Ctrl + R</label>
+                    <label><input type="radio" name="q20" value="b"> Shift + F7</label>
+                    <label><input type="radio" name="q20" value="c"> F7</label>
+                    <label><input type="radio" name="q20" value="d"> F1</label>
+                </div>
+                <div class="result-feedback" id="feedback-q20"></div>
+            </div>
+
+            <div class="question">
+                <p>21. Qual é o processo mais comum para **Criar uma Tabela** no Word?</p>
+                <div class="options">
+                    <label><input type="radio" name="q21" value="a"> Usar o atalho Ctrl + T.</label>
+                    <label><input type="radio" name="q21" value="b"> Usar a Guia Início > Grupo Parágrafo.</label>
+                    <label><input type="radio" name="q21" value="c"> Guia Inserir > Grupo Tabelas > Inserir Tabela.</label>
+                    <label><input type="radio" name="q21" value="d"> Desenhar uma linha horizontal na Guia Design.</label>
+                </div>
+                <div class="result-feedback" id="feedback-q21"></div>
+            </div>
+
+            <div class="question">
+                <p>22. Para ter cabeçalhos e rodapés **diferentes** após uma Quebra de Seção, o que é preciso fazer na nova seção?</p>
+                <div class="options">
+                    <label><input type="radio" name="q22" value="a"> Usar o atalho Ctrl + D.</label>
+                    <label><input type="radio" name="q22" value="b"> Maximizar o zoom.</label>
+                    <label><input type="radio" name="q22" value="c"> Desativar a opção 'Vincular ao Anterior' na Guia Design (Ferramentas de Cabeçalho e Rodapé).</label>
+                    <label><input type="radio" name="q22" value="d"> Aplicar um novo estilo de título.</label>
+                </div>
+                <div class="result-feedback" id="feedback-q22"></div>
+            </div>
+
+            <div class="question">
+                <p>23. Onde você insere uma **Quebra de Página** para forçar o texto a começar em uma nova página, mantendo a mesma formatação de seção?</p>
+                <div class="options">
+                    <label><input type="radio" name="q23" value="a"> Guia Design > Grupo Formatação.</label>
+                    <label><input type="radio" name="q23" value="b"> Guia Início > Grupo Parágrafo.</label>
+                    <label><input type="radio" name="q23" value="c"> Guia Layout > Quebras > Quebra de Página.</label>
+                    <label><input type="radio" name="q23" value="d"> Guia Referências.</label>
+                </div>
+                <div class="result-feedback" id="feedback-q23"></div>
+            </div>
+
+            <div class="question">
+                <p>24. Qual guia é o ponto central para adicionar elementos visuais como Imagens, Ícones, WordArt e Diagramas SmartArt?</p>
+                <div class="options">
+                    <label><input type="radio" name="q24" value="a"> Revisão</label>
+                    <label><input type="radio" name="q24" value="b"> Layout</label>
+                    <label><input type="radio" name="q24" value="c"> Inserir</label>
+                    <label><input type="radio" name="q24" value="d"> Design</label>
+                </div>
+                <div class="result-feedback" id="feedback-q24"></div>
+            </div>
+
+            <div class="question">
+                <p>25. Qual é a principal função e importância do recurso **Mala Direta** (Mail Merge)?</p>
+                <div class="options">
+                    <label><input type="radio" name="q25" value="a"> Corrigir erros ortográficos em massa.</label>
+                    <label><input type="radio" name="q25" value="b"> Criar envelopes e etiquetas com formatação complexa.</label>
+                    <label><input type="radio" name="q25" value="c"> Personalizar cartas, e-mails ou etiquetas para múltiplos destinatários, usando dados de uma fonte externa (ex: Excel).</label>
+                    <label><input type="radio" name="q25" value="d"> Compactar o documento para envio por e-mail.</label>
+                </div>
+                <div class="result-feedback" id="feedback-q25"></div>
+            </div>
+
+            <button type="submit" class="submit-btn">Verificar Respostas e Nota Final</button>
+
+        </form>
+
+        <div id="results-container">
+            <h2>Resultado da Prova</h2>
+            <p>Você acertou <span id="score">0</span> de 25 questões.</p>
+            <p>Sua **Nota Final** foi: <span id="final-grade">0</span> / 10.</p>
+            <p>Seu **Percentual de Acertos** foi de: <span id="percentage">0%</span>.</p>
+            <p>As questões certas estão marcadas em **Azul** e as erradas em **Vermelho**.</p>
+        </div>
+
+        <div class="footer">
+            Prova criada para fins educacionais - Microsoft Word
+        </div>
+    </div>
+
+    <script>
+        // Objeto com as respostas corretas
+        const correctAnswers = {
+            q1: 'b', q2: 'c', q3: 'b', q4: 'c', q5: 'c',
+            q6: 'c', q7: 'b', q8: 'c', q9: 'c', q10: 'c',
+            q11: 'b', q12: 'c', q13: 'c', q14: 'c', q15: 'b',
+            q16: 'c', q17: 'b', q18: 'b', q19: 'c', q20: 'c',
+            q21: 'c', q22: 'c', q23: 'c', q24: 'c', q25: 'c'
+        };
+
+        // Objeto com o texto da resposta correta para o feedback (SEM NEGRITO NOS TEXTOS)
+        const correctText = {
+            q1: 'A resposta correta é: .DOCX.',
+            q2: 'A resposta correta é: Na parte inferior da janela do Word.',
+            q3: 'A resposta correta é: Grupos.',
+            q4: 'A resposta correta é: Informações, Salvar Como e Imprimir.',
+            q5: 'A resposta correta é: Ctrl + S.',
+            q6: 'A resposta correta é: Layout de Impressão.',
+            q7: 'A resposta correta é: Ajudar a definir margens, recuos e tabulações de forma visual.',
+            q8: 'A resposta correta é: Layout.',
+            q9: 'A resposta correta é: Ctrl + T (ou Ctrl + A em algumas configurações).',
+            q10: 'A resposta correta é: Ctrl + V.',
+            q11: 'A resposta correta é: Ctrl + U (Para "Substituir") ou Ctrl + L (Para "Localizar").',
+            q12: 'A resposta correta é: Remove toda a formatação aplicada (fonte, tamanho, cor, estilo) e retorna ao estilo Normal.',
+            q13: 'A resposta correta é: Ctrl + I.',
+            q14: 'A resposta correta é: Fonte.',
+            q15: 'A resposta correta é: Inserir.',
+            q16: 'A resposta correta é: Ctrl + Z.',
+            q17: 'A resposta correta é: Grupo Parágrafo (Guia Início) e Guia Design/Layout.',
+            q18: 'A resposta correta é: Permitir que o Word gerencie automaticamente os números e recuos da lista.',
+            q19: 'A resposta correta é: Layout.',
+            q20: 'A resposta correta é: F7.',
+            q21: 'A resposta correta é: Guia Inserir > Grupo Tabelas > Inserir Tabela.',
+            q22: 'A resposta correta é: Desativar a opção \'Vincular ao Anterior\' na Guia Design (Ferramentas de Cabeçalho e Rodapé).',
+            q23: 'A resposta correta é: Guia Layout > Quebras > Quebra de Página.',
+            q24: 'A resposta correta é: Inserir.',
+            q25: 'A resposta correta é: Personalizar cartas, e-mails ou etiquetas para múltiplos destinatários, usando dados de uma fonte externa (ex: Excel).'
+        };
+
+        const form = document.getElementById('quiz-form');
+        const resultsContainer = document.getElementById('results-container');
+        const scoreSpan = document.getElementById('score');
+        const percentageSpan = document.getElementById('percentage');
+        const finalGradeSpan = document.getElementById('final-grade');
+        const totalQuestions = 25;
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let score = 0;
+
+            // Itera sobre todas as 25 questões
+            for (let i = 1; i <= totalQuestions; i++) {
+                const qName = 'q' + i;
+                const feedbackElement = document.getElementById('feedback-' + qName);
+                
+                // Limpa o feedback anterior
+                feedbackElement.style.display = 'none';
+                feedbackElement.className = 'result-feedback';
+                
+                // Obtém a resposta marcada pelo usuário
+                const userAnswerElement = document.querySelector(`input[name="${qName}"]:checked`);
+                const userAnswer = userAnswerElement ? userAnswerElement.value : null;
+
+                const correctAnswer = correctAnswers[qName];
+                
+                // Verifica a resposta
+                if (userAnswer === correctAnswer) {
+                    score++;
+                    feedbackElement.classList.add('correct');
+                    // Mantém o ✅ e remove o negrito do texto da resposta correta (já sem asteriscos no JS)
+                    feedbackElement.innerHTML = '✅ Correto!';
+                } else {
+                    feedbackElement.classList.add('incorrect');
+                    
+                    let feedbackHTML = '❌ **Incorreto!** ';
+                    if (userAnswer === null) {
+                         feedbackHTML = '❌ **Não respondido!** ';
+                    }
+                    
+                    // Adiciona o texto da resposta correta (agora sem negrito)
+                    feedbackHTML += correctText[qName];
+                    feedbackElement.innerHTML = feedbackHTML;
+                }
+                
+                feedbackElement.style.display = 'block';
+            }
+
+            // 1. Calcula o Percentual
+            const percentage = (score / totalQuestions) * 100;
+            
+            // 2. Calcula a Nota Final (máxima 10)
+            const finalGrade = (score / totalQuestions) * 10;
+
+
+            // 3. Exibe a pontuação, percentual e nota final
+            scoreSpan.textContent = score;
+            percentageSpan.textContent = percentage.toFixed(2) + '%'; 
+            finalGradeSpan.textContent = finalGrade.toFixed(1);
+
+            resultsContainer.style.display = 'block';
+            
+            // Rola para a seção de resultados
+            resultsContainer.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>
